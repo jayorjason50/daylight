@@ -2,7 +2,7 @@
 //  VCMyQuizzes.swift
 //  TableDemo
 //
-//  Created by Jason Spence on 17/07/2015.
+//  Created by Liam Chapman on 17/07/2015.
 //  Copyright (c) 2015 Jason Spence. All rights reserved.
 //
 
