@@ -16,6 +16,9 @@
 		0C289AA91B5A993E00BEA212 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C4BD7221B5961EB004AC52B /* CFNetwork.framework */; };
 		0C289AAD1B5A997100BEA212 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C289AAC1B5A997100BEA212 /* Firebase.framework */; };
 		0C289AB41B5D4E6E00BEA212 /* VCQuestionEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C289AB31B5D4E6E00BEA212 /* VCQuestionEdit.swift */; };
+		0C3CECC41B5EBC0900C6E322 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C3CECC31B5EBC0900C6E322 /* Accounts.framework */; };
+		0C3CECC61B5EBC1700C6E322 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C3CECC51B5EBC1700C6E322 /* Social.framework */; };
+		0C3CECD21B5ED2AC00C6E322 /* TwitterAuthHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3CECD11B5ED2AC00C6E322 /* TwitterAuthHelper.m */; };
 		0C4BD7171B595E3F004AC52B /* VCLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4BD7161B595E3F004AC52B /* VCLogin.swift */; };
 		0C4BD7191B595E57004AC52B /* VCMyQuizzes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4BD7181B595E57004AC52B /* VCMyQuizzes.swift */; };
 		0C4BD71B1B595F99004AC52B /* VCMyQuizzesDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4BD71A1B595F99004AC52B /* VCMyQuizzesDetail.swift */; };
@@ -53,6 +56,10 @@
 		0C289AA41B5A985C00BEA212 /* TableDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TableDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		0C289AAC1B5A997100BEA212 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
 		0C289AB31B5D4E6E00BEA212 /* VCQuestionEdit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCQuestionEdit.swift; sourceTree = "<group>"; };
+		0C3CECC31B5EBC0900C6E322 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		0C3CECC51B5EBC1700C6E322 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		0C3CECD01B5ED2AC00C6E322 /* TwitterAuthHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterAuthHelper.h; sourceTree = "<group>"; };
+		0C3CECD11B5ED2AC00C6E322 /* TwitterAuthHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterAuthHelper.m; sourceTree = "<group>"; };
 		0C4BD7161B595E3F004AC52B /* VCLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VCLogin.swift; path = ../VCLogin.swift; sourceTree = "<group>"; };
 		0C4BD7181B595E57004AC52B /* VCMyQuizzes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VCMyQuizzes.swift; path = ../VCMyQuizzes.swift; sourceTree = "<group>"; };
 		0C4BD71A1B595F99004AC52B /* VCMyQuizzesDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCMyQuizzesDetail.swift; sourceTree = "<group>"; };
@@ -72,6 +79,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C3CECC61B5EBC1700C6E322 /* Social.framework in Frameworks */,
+				0C3CECC41B5EBC0900C6E322 /* Accounts.framework in Frameworks */,
 				0C289AA91B5A993E00BEA212 /* CFNetwork.framework in Frameworks */,
 				0C289AAD1B5A997100BEA212 /* Firebase.framework in Frameworks */,
 				0C4BD72B1B596264004AC52B /* SystemConfiguration.framework in Frameworks */,
@@ -97,6 +106,8 @@
 		0C11D9B11B592A5A00CEA1EF = {
 			isa = PBXGroup;
 			children = (
+				0C3CECC51B5EBC1700C6E322 /* Social.framework */,
+				0C3CECC31B5EBC0900C6E322 /* Accounts.framework */,
 				0CC5A2311B5EA48E00B3507A /* FBSDKCoreKit.framework */,
 				0CC5A2321B5EA48E00B3507A /* FBSDKLoginKit.framework */,
 				0CC5A2331B5EA48E00B3507A /* FBSDKShareKit.framework */,
@@ -125,6 +136,8 @@
 		0C11D9BC1B592A5B00CEA1EF /* TableDemo */ = {
 			isa = PBXGroup;
 			children = (
+				0C3CECD01B5ED2AC00C6E322 /* TwitterAuthHelper.h */,
+				0C3CECD11B5ED2AC00C6E322 /* TwitterAuthHelper.m */,
 				0C4BD7181B595E57004AC52B /* VCMyQuizzes.swift */,
 				0C289AB31B5D4E6E00BEA212 /* VCQuestionEdit.swift */,
 				0C4BD7161B595E3F004AC52B /* VCLogin.swift */,
@@ -269,6 +282,7 @@
 				0C4BD71B1B595F99004AC52B /* VCMyQuizzesDetail.swift in Sources */,
 				0C11D9C21B592A5B00CEA1EF /* ViewController.swift in Sources */,
 				0C4BD7171B595E3F004AC52B /* VCLogin.swift in Sources */,
+				0C3CECD21B5ED2AC00C6E322 /* TwitterAuthHelper.m in Sources */,
 				0C4BD7191B595E57004AC52B /* VCMyQuizzes.swift in Sources */,
 				0C289AB41B5D4E6E00BEA212 /* VCQuestionEdit.swift in Sources */,
 				0C11D9C01B592A5B00CEA1EF /* AppDelegate.swift in Sources */,
