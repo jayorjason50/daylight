@@ -1,0 +1,21 @@
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "084-3f-8ap"; */
+"084-3f-8ap.text" = "Title";
+
+/* Class = "UIViewController"; title = "Settings"; ObjectID = "FFa-hz-gog"; */
+"FFa-hz-gog.title" = "Settings";
+
+/* Class = "UIViewController"; title = "Login"; ObjectID = "KNa-rk-mEP"; */
+"KNa-rk-mEP.title" = "Login";
+
+/* Class = "UIViewController"; title = "MiQuizzesDetail"; ObjectID = "OZa-FA-pE2"; */
+"OZa-FA-pE2.title" = "MiQuizzesDetail";
+
+/* Class = "UIButton"; normalTitle = "Update Question"; ObjectID = "XDX-zo-ph5"; */
+"XDX-zo-ph5.normalTitle" = "Update Question";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "rxd-r6-wsk"; */
+"rxd-r6-wsk.normalTitle" = "Button";
+
+/* Class = "UIViewController"; title = "MiQuizzesList"; ObjectID = "vXZ-lx-hvc"; */
+"vXZ-lx-hvc.title" = "MiQuizzesList";

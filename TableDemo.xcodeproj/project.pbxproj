@@ -23,6 +23,10 @@
 		0C4BD7271B596206004AC52B /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C4BD7261B596206004AC52B /* libc++.dylib */; };
 		0C4BD7291B59624D004AC52B /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C4BD7281B59624D004AC52B /* libicucore.dylib */; };
 		0C4BD72B1B596264004AC52B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C4BD72A1B596264004AC52B /* SystemConfiguration.framework */; };
+		0CC5A2291B5E9A4A00B3507A /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CC5A2261B5E9A4A00B3507A /* FBSDKCoreKit.framework */; };
+		0CC5A22A1B5E9A4A00B3507A /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CC5A2271B5E9A4A00B3507A /* FBSDKLoginKit.framework */; };
+		0CC5A22B1B5E9A4A00B3507A /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CC5A2281B5E9A4A00B3507A /* FBSDKShareKit.framework */; };
+		0CC5A2301B5E9F9800B3507A /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC5A22F1B5E9F9800B3507A /* LoginController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +61,10 @@
 		0C4BD7261B596206004AC52B /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		0C4BD7281B59624D004AC52B /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		0C4BD72A1B596264004AC52B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		0CC5A2261B5E9A4A00B3507A /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../../../Downloaded Frameworks/FacebookSDK/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
+		0CC5A2271B5E9A4A00B3507A /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "../../../Downloaded Frameworks/FacebookSDK/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
+		0CC5A2281B5E9A4A00B3507A /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = "../../../Downloaded Frameworks/FacebookSDK/FBSDKShareKit.framework"; sourceTree = "<group>"; };
+		0CC5A22F1B5E9F9800B3507A /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +72,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CC5A2291B5E9A4A00B3507A /* FBSDKCoreKit.framework in Frameworks */,
+				0CC5A22A1B5E9A4A00B3507A /* FBSDKLoginKit.framework in Frameworks */,
+				0CC5A22B1B5E9A4A00B3507A /* FBSDKShareKit.framework in Frameworks */,
 				0C289AA91B5A993E00BEA212 /* CFNetwork.framework in Frameworks */,
 				0C289AAD1B5A997100BEA212 /* Firebase.framework in Frameworks */,
 				0C4BD72B1B596264004AC52B /* SystemConfiguration.framework in Frameworks */,
@@ -86,6 +97,9 @@
 		0C11D9B11B592A5A00CEA1EF = {
 			isa = PBXGroup;
 			children = (
+				0CC5A2261B5E9A4A00B3507A /* FBSDKCoreKit.framework */,
+				0CC5A2271B5E9A4A00B3507A /* FBSDKLoginKit.framework */,
+				0CC5A2281B5E9A4A00B3507A /* FBSDKShareKit.framework */,
 				0C289AAC1B5A997100BEA212 /* Firebase.framework */,
 				0C4BD72A1B596264004AC52B /* SystemConfiguration.framework */,
 				0C4BD7281B59624D004AC52B /* libicucore.dylib */,
@@ -121,6 +135,7 @@
 				0C11D9C61B592A5B00CEA1EF /* Images.xcassets */,
 				0C11D9C81B592A5B00CEA1EF /* LaunchScreen.xib */,
 				0C11D9BD1B592A5B00CEA1EF /* Supporting Files */,
+				0CC5A22F1B5E9F9800B3507A /* LoginController.swift */,
 			);
 			path = TableDemo;
 			sourceTree = "<group>";
@@ -257,6 +272,7 @@
 				0C4BD7191B595E57004AC52B /* VCMyQuizzes.swift in Sources */,
 				0C289AB41B5D4E6E00BEA212 /* VCQuestionEdit.swift in Sources */,
 				0C11D9C01B592A5B00CEA1EF /* AppDelegate.swift in Sources */,
+				0CC5A2301B5E9F9800B3507A /* LoginController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,6 +411,9 @@
 					"Documents/com~apple~CloudDocs/Downloaded",
 					Frameworks/Firebase,
 					"$(PROJECT_DIR)",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Downloaded",
+					Frameworks/FacebookSDK,
 				);
 				INFOPLIST_FILE = TableDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -422,6 +441,9 @@
 					"Documents/com~apple~CloudDocs/Downloaded",
 					Frameworks/Firebase,
 					"$(PROJECT_DIR)",
+					"$(USER_LIBRARY_DIR)/Mobile",
+					"Documents/com~apple~CloudDocs/Downloaded",
+					Frameworks/FacebookSDK,
 				);
 				INFOPLIST_FILE = TableDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

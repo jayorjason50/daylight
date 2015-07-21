@@ -210,20 +210,17 @@
                                     <rect key="frame" x="199" y="118" width="203" height="129"/>
                                 </variation>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rxd-r6-wsk">
-                                <rect key="frame" x="264" y="246" width="46" height="30"/>
-                                <state key="normal" title="Button">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hNv-tq-fzn" customClass="FBSDKLoginButton">
+                                <rect key="frame" x="266" y="76" width="68" height="30"/>
+                                <state key="normal" title="Facebook">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="hYc-mZ-dLL" kind="show" id="9T9-m1-UJF"/>
-                                </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.80037698550000003" blue="0.366892259" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="0.93067357251373617" blue="0.32709782214374894" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="rxd-r6-wsk" firstAttribute="top" secondItem="riH-eb-pF3" secondAttribute="bottom" constant="226" id="KTD-AD-FYS"/>
-                            <constraint firstItem="rxd-r6-wsk" firstAttribute="leading" secondItem="LPq-lb-Wgh" secondAttribute="leading" constant="264" id="V1X-Rv-iPn"/>
+                            <constraint firstItem="hNv-tq-fzn" firstAttribute="top" secondItem="riH-eb-pF3" secondAttribute="bottom" constant="56" id="jCM-uo-Ej8"/>
+                            <constraint firstAttribute="centerX" secondItem="hNv-tq-fzn" secondAttribute="centerX" id="vl7-4p-ivC"/>
                             <constraint firstAttribute="centerX" secondItem="dIz-m7-Rhk" secondAttribute="centerX" id="vqP-QL-7SX"/>
                         </constraints>
                         <variation key="default">
@@ -243,6 +240,9 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="login_FB" destination="hNv-tq-fzn" id="RkA-jU-ev6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OFq-IN-okO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
