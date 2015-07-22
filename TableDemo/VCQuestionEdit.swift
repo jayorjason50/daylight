@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import CoreData
 class VCQuestionEdit: UIViewController,UITextFieldDelegate {
 
     
@@ -24,6 +24,14 @@ class VCQuestionEdit: UIViewController,UITextFieldDelegate {
         super.viewDidLoad()
         
         
+        var appDel: AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        var context: NSManagedObjectContext = appDel.managedObjectContext!
+        
+        
+        var request = NSFetchRequest(entityName : "UID")
+        var results : NSArray = context.executeFetchRequest(request, error: nil)!
+        var res = results[0] as! NSManagedObject
+        var uid = res.valueForKey("uID") as! String
         
         
         
@@ -31,7 +39,7 @@ class VCQuestionEdit: UIViewController,UITextFieldDelegate {
         updateButton.addTarget(self, action: "updateQuestion:", forControlEvents: UIControlEvents.TouchUpInside)
         
         var snapshot: FDataSnapshot = FDataSnapshot()
-        var ref = Firebase(url:"https://miquiz.firebaseio.com/Questions")
+        var ref = Firebase(url:"https://miquiz.firebaseio.com/\(uid)/Questions")
         ref.observeSingleEventOfType(.Value, withBlock:{snapshot in
            for rest in snapshot.children.allObjects as! [FDataSnapshot]{
                 var child = rest.children.allObjects
@@ -43,7 +51,7 @@ class VCQuestionEdit: UIViewController,UITextFieldDelegate {
                       self.data = rest.key
                         
                     
-                        var qRef = Firebase(url:"https://miquiz.firebaseio.com/Questions/"+self.data)
+                        var qRef = Firebase(url:"https://miquiz.firebaseio.com/\(uid)/Questions/"+self.data)
                         qRef.observeSingleEventOfType(.Value, withBlock:{snapshot in
                             
                             
@@ -112,11 +120,22 @@ class VCQuestionEdit: UIViewController,UITextFieldDelegate {
     
     func updateQuestion(sender:UIButton){
     
+        var appDel: AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        var context: NSManagedObjectContext = appDel.managedObjectContext!
+        
+        
+        var request = NSFetchRequest(entityName : "UID")
+        var results : NSArray = context.executeFetchRequest(request, error: nil)!
+        var res = results[0] as! NSManagedObject
+        var uid = res.valueForKey("uID") as! String
+        
+        
+        
         var qText : String = questionField.text
         var aText : String = answerField.text
         
         var theKey = data
-        var ref = Firebase(url:"https://miquiz.firebaseio.com/Questions")
+        var ref = Firebase(url:"https://miquiz.firebaseio.com/\(uid)/Questions")
         var hopperRef = ref.childByAppendingPath(theKey)
         
         

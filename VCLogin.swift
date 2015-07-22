@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import CoreData
 class VCLogin: UIViewController, UIActionSheetDelegate {
 
     @IBOutlet weak var login_FB: UIButton!
@@ -56,8 +56,28 @@ class VCLogin: UIViewController, UIActionSheetDelegate {
                         }
                         else
                         {
-                            self.theCode = authData
-                            println("Auth Data \(authData)")
+                            
+                            //println("Auth Data \(authData.uid)")
+                            
+                            
+                            var appDel: AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+                            var context: NSManagedObjectContext = appDel.managedObjectContext!
+                            
+                            
+                            var request = NSFetchRequest(entityName : "UID")
+                            var results : NSArray = context.executeFetchRequest(request, error: nil)!
+                            
+                            if results.count < 1{
+                                
+                            var newUser = NSEntityDescription.insertNewObjectForEntityForName("UID", inManagedObjectContext: context) as! NSManagedObject
+                            newUser.setValue(authData.uid, forKey: "uID")
+                            newUser.setValue(0, forKey: "count")
+                            context.save(nil)
+                                
+                                
+                                
+                                
+                            }
                             self.performSegueWithIdentifier("toTabBar", sender: authData)
                             
                         }
@@ -162,7 +182,7 @@ func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: I
         
     }
     
-    
+  
     
 
     //facebook:839809966111003

@@ -10,10 +10,16 @@
 
 import UIKit
 
+class ModelData {
+    
+    var code = 123
+    
+}
+
 class VCTab: UITabBarController, UITextFieldDelegate{
 
 var user: AnyObject?
-
+var model = ModelData()
     
     func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
         println("viewController: \(viewController)")
@@ -22,11 +28,13 @@ var user: AnyObject?
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("User: \(user)")
+        //print("User: \(user)")
     
     
     
     }
     
 }
+
+
 

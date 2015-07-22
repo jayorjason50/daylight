@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import CoreData
 class VCMyQuizzes: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
     @IBOutlet weak var tableView: UITableView!
@@ -24,8 +24,17 @@ class VCMyQuizzes: UIViewController, UITableViewDataSource, UITableViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        var appDel: AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        var context: NSManagedObjectContext = appDel.managedObjectContext!
+        
+        var request = NSFetchRequest(entityName : "UID")
         //print("User: \(user)")
        
+        var results : NSArray = context.executeFetchRequest(request, error: nil)!
+        
+        var res = results[0] as! NSManagedObject
+        var uid = res.valueForKey("uID") as! String
         
         
         tableView.dataSource = self
@@ -37,7 +46,7 @@ class VCMyQuizzes: UIViewController, UITableViewDataSource, UITableViewDelegate{
         //This is for editing the list ->    self.tableView.editing = true
         
         var snapshot: FDataSnapshot = FDataSnapshot()
-        var ref = Firebase(url:"https://miquiz.firebaseio.com/MyQuizzes")
+        var ref = Firebase(url:"https://miquiz.firebaseio.com/\(uid)/MyQuizzes")
         ref.observeEventType(.ChildAdded, withBlock: {snapshot in
             
             
@@ -112,8 +121,7 @@ class VCMyQuizzes: UIViewController, UITableViewDataSource, UITableViewDelegate{
         
      }
     
-    
-    
+   
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
