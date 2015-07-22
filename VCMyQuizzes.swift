@@ -16,6 +16,48 @@ class VCMyQuizzes: UIViewController, UITableViewDataSource, UITableViewDelegate{
    
     var firebase: Firebase?
     var quizName = ""
+    var theNewCode:AnyObject!
+    var user: AnyObject?
+
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //print("User: \(user)")
+       
+        
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        
+        
+        
+        
+        //This is for editing the list ->    self.tableView.editing = true
+        
+        var snapshot: FDataSnapshot = FDataSnapshot()
+        var ref = Firebase(url:"https://miquiz.firebaseio.com/MyQuizzes")
+        ref.observeEventType(.ChildAdded, withBlock: {snapshot in
+            
+            
+            self.miQuizzes.addObject(snapshot.key)
+            self.tableView.reloadData()
+        })
+        
+        ref.observeEventType(.ChildRemoved, withBlock: {snapshot in
+            
+            
+            self.miQuizzes.removeObject(snapshot.key)
+            self.tableView.reloadData()
+        })
+        
+        
+    }
+    
+    
+    
+    
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -71,32 +113,6 @@ class VCMyQuizzes: UIViewController, UITableViewDataSource, UITableViewDelegate{
      }
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.dataSource = self
-        tableView.delegate = self
-        
-        
-        //This is for editing the list ->    self.tableView.editing = true
-        
-        var snapshot: FDataSnapshot = FDataSnapshot()
-        var ref = Firebase(url:"https://miquiz.firebaseio.com/MyQuizzes")
-        ref.observeEventType(.ChildAdded, withBlock: {snapshot in
-            
-            
-            self.miQuizzes.addObject(snapshot.key)
-            self.tableView.reloadData()
-        })
-        
-        ref.observeEventType(.ChildRemoved, withBlock: {snapshot in
-            
-            
-            self.miQuizzes.removeObject(snapshot.key)
-            self.tableView.reloadData()
-        })
-        
-
-    }
     
     
     override func didReceiveMemoryWarning() {
@@ -104,7 +120,7 @@ class VCMyQuizzes: UIViewController, UITableViewDataSource, UITableViewDelegate{
         // Dispose of any resources that can be recreated.
     }
    
-    
+   
     
     
     

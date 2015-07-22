@@ -17,6 +17,10 @@ class VCLogin: UIViewController, UIActionSheetDelegate {
     var ref: Firebase!
     var authHelper: TwitterAuthHelper!
     var accounts: [ACAccount]!
+    var theCode: FAuthData!
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,11 +29,13 @@ class VCLogin: UIViewController, UIActionSheetDelegate {
         login_FB.addTarget(self, action: "loginFB:", forControlEvents: UIControlEvents.TouchUpInside)
         login_Twitter.addTarget(self, action: "loginTwitter:", forControlEvents: UIControlEvents.TouchUpInside)
         
+        
           // Do any additional setup after loading the view.
     }
     
     func loginFB(sender:UIButton){
         
+        if theCode == nil{
         
         //let ref = Firebase(url: "https://miquiz.firebaseio.com")
         let facebookLogin = FBSDKLoginManager()
@@ -50,14 +56,23 @@ class VCLogin: UIViewController, UIActionSheetDelegate {
                         }
                         else
                         {
-                            
+                            self.theCode = authData
                             println("Auth Data \(authData)")
-                            println("UID \(authData.uid)")
-                            self.performSegueWithIdentifier("toTabBar", sender: self)
+                            self.performSegueWithIdentifier("toTabBar", sender: authData)
+                            
                         }
                 })
             }
         })
+        }
+        else{
+            
+            
+            print("hello")
+           self.performSegueWithIdentifier("toTabBar", sender: theCode)
+        
+        
+        }
         
        
     }
@@ -68,30 +83,10 @@ class VCLogin: UIViewController, UIActionSheetDelegate {
     }
     
     func loginTwitter(sender:UIButton){
-        
-     
-//        let ref = Firebase(url: "https://miquiz.firebaseio.com")
-//        let twitterAuthHelper = TwitterAuthHelper(firebaseRef: ref, apiKey:"mePjllXD6Pg8Flxt1IC5PaYsR")
-//        
-//        twitterAuthHelper.selectTwitterAccountWithCallback { error, accounts in
-//            if error != nil {
-//               println("Error") // Error retrieving Twitter accounts
-//            } else if accounts.count >= 1 {
-//                // Select an account. Here we pick the first one for simplicity
-//                let account = accounts[0] as? ACAccount
-//                twitterAuthHelper.authenticateAccount(account, withCallback: { error, authData in
-//                    if error != nil {
-//                        println("Nay")// Error authenticating account
-//                    } else {
-//                        print(authData)
-//                        println("Yay")
-//                    }
-//                })
-//            }
-//        }
+
         
          self.authWithTwitter()
-        }
+    }
         
         
     
@@ -106,7 +101,7 @@ func authWithTwitter() {
         else{
         
         UIApplication.sharedApplication().openURL(NSURL(string: "https://twitter.com/signup")!)
-        
+            //UIApplication.sharedApplication().openURL(NSURL(string:UIApplicationOpenSettingsURLString)!);
         }
     
     }
@@ -118,8 +113,9 @@ func authAccount(account: ACAccount) {
             // There was an error authenticating
         } else {
             // We have an authenticated Twitter user
-            NSLog("%@", authData)
+            
             // segue to chat
+            self.theCode = authData
             self.performSegueWithIdentifier("toTabBar", sender: authData)
         }
     })
@@ -155,7 +151,21 @@ func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: I
         }
     }
 }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        
+//        var tabBarC : UITabBarController = segue.destinationViewController as! UITabBarController
+//         var desView: VCTab = tabBarC.viewControllers?.first as! VCTab
+//        
+//        desView.user = sender
 
+        
+    }
+    
+    
+    
+
+    //facebook:839809966111003
 
 
     /*
@@ -167,5 +177,7 @@ func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: I
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
 
 }

@@ -57,7 +57,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1044" y="240"/>
+            <point key="canvasLocation" x="1011" y="240"/>
         </scene>
         <!--MiQuizzesDetail-->
         <scene sceneID="oIG-vK-CrO">
@@ -96,7 +96,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kr9-vo-6OI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1011" y="962"/>
+            <point key="canvasLocation" x="1011" y="913"/>
         </scene>
         <!--Question Edit-->
         <scene sceneID="dB4-yj-rta">
@@ -183,7 +183,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vdp-aw-NDL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1716" y="1052"/>
+            <point key="canvasLocation" x="1664" y="913"/>
         </scene>
         <!--Settings-->
         <scene sceneID="G2e-lW-aQy">
@@ -273,10 +273,10 @@
             </objects>
             <point key="canvasLocation" x="-1189" y="574.5"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab-->
         <scene sceneID="1eI-tk-SGI">
             <objects>
-                <tabBarController storyboardIdentifier="tabBar" id="hYc-mZ-dLL" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBar" id="hYc-mZ-dLL" customClass="VCTab" customModule="TableDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Agg-bw-Ius">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
