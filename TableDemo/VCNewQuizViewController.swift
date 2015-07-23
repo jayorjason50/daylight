@@ -34,7 +34,7 @@ class VCNewQuizViewController: UIViewController {
     
     func addQuiz(sender:UIButton){
         
-        print("hello")
+        
         var quizNameText = quizName.text
         var quizQuestionText = quizQuestion.text
         var quizAnswerText = quizAnswer.text
@@ -45,12 +45,13 @@ class VCNewQuizViewController: UIViewController {
         var request = NSFetchRequest(entityName : "UID")
         var results : NSArray = context.executeFetchRequest(request, error: nil)!
         var res = results[0] as! NSManagedObject
+        
         var uid = res.valueForKey("uID") as! String
         
         var newRes = results[results.count - 1] as! NSManagedObject
         var IDCount = newRes.valueForKey("count") as! Int
         
-        println("hello \(uid)")
+        
         
         var newUser = NSEntityDescription.insertNewObjectForEntityForName("UID", inManagedObjectContext: context) as! NSManagedObject
         newUser.setValue(IDCount + 1, forKey: "count")

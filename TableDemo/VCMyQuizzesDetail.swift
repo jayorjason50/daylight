@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import CoreData
 class VCMyQuizzesDetail: UIViewController,UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var DetailTable: UITableView!
@@ -29,11 +29,20 @@ class VCMyQuizzesDetail: UIViewController,UITableViewDataSource, UITableViewDele
         DetailTable.delegate = self
         
         name = self.title!//Get title (so we know which quiz we are going into 
-        
+        println(name)
         //This is for editing the list ->    self.tableView.editing = true
         
+        
+        var appDel: AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        var context: NSManagedObjectContext = appDel.managedObjectContext!
+        
+        var request = NSFetchRequest(entityName : "UID")
+        var results : NSArray = context.executeFetchRequest(request, error: nil)!
+        var res = results[0] as! NSManagedObject
+        
+        var uid = res.valueForKey("uID") as! String
         var snapshot: FDataSnapshot = FDataSnapshot()
-        var ref = Firebase(url:"https://miquiz.firebaseio.com/MyQuizzes/" + name) //Make ref to the selected quiz
+        var ref = Firebase(url:"https://miquiz.firebaseio.com/\(uid)/MyQuizzes/" + name) //Make ref to the selected quiz
         
         ref.observeSingleEventOfType(.Value, withBlock:{snapshot in
             self.miRounds.addObject(snapshot.childrenCount)
@@ -50,7 +59,7 @@ class VCMyQuizzesDetail: UIViewController,UITableViewDataSource, UITableViewDele
                     
                     for rest in child as! [FDataSnapshot]{
                         var questionID = rest.value as! String
-                        var ref = Firebase(url:"https://miquiz.firebaseio.com/Questions")
+                        var ref = Firebase(url:"https://miquiz.firebaseio.com/\(uid)/Questions")
                         ref.observeSingleEventOfType(.Value, withBlock:{snapshot in
                             
                             for rest in snapshot.children.allObjects as! [FDataSnapshot]{

@@ -47,6 +47,8 @@ class VCMyQuizzes: UIViewController, UITableViewDataSource, UITableViewDelegate{
         
         var snapshot: FDataSnapshot = FDataSnapshot()
         var ref = Firebase(url:"https://miquiz.firebaseio.com/\(uid)/MyQuizzes")
+        
+ 
         ref.observeEventType(.ChildAdded, withBlock: {snapshot in
             
             

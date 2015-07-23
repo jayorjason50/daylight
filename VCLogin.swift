@@ -75,6 +75,17 @@ class VCLogin: UIViewController, UIActionSheetDelegate {
                             context.save(nil)
                                 
                                 
+                                var questionToAdd = Firebase(url:"https://miquiz.firebaseio.com/\(authData.uid)/Questions")
+                                let addQuestion = ["Question":"This is a test Question", "Answer":"This is a test answer","ID":"ID1"]
+                                let questionRef = questionToAdd.childByAutoId()
+                                questionRef.setValue(addQuestion)
+                                
+                                
+                                var quiz = Firebase(url:"https://miquiz.firebaseio.com/\(authData.uid)/MyQuizzes/Example Quiz/Round 1")
+                                let addQuiz = ["ID":"ID1"]
+                                let quizRef = quiz.childByAutoId()
+                                quizRef.setValue(addQuiz)
+                                
                                 
                                 
                             }
