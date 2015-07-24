@@ -64,12 +64,12 @@ class VCLogin: UIViewController, UIActionSheetDelegate {
                             var context: NSManagedObjectContext = appDel.managedObjectContext!
                             
                             
-                            var request = NSFetchRequest(entityName : "UID")
+                            var request = NSFetchRequest(entityName : "Facebook")
                             var results : NSArray = context.executeFetchRequest(request, error: nil)!
                             
                             if results.count < 1{
                                 
-                            var newUser = NSEntityDescription.insertNewObjectForEntityForName("UID", inManagedObjectContext: context) as! NSManagedObject
+                            var newUser = NSEntityDescription.insertNewObjectForEntityForName("Facebook", inManagedObjectContext: context) as! NSManagedObject
                             newUser.setValue(authData.uid, forKey: "uID")
                             newUser.setValue(0, forKey: "count")
                             context.save(nil)
@@ -89,6 +89,11 @@ class VCLogin: UIViewController, UIActionSheetDelegate {
                                 
                                 
                             }
+                            var newUser = NSEntityDescription.insertNewObjectForEntityForName("UID", inManagedObjectContext: context) as! NSManagedObject
+                            newUser.setValue(0, forKey: "login")
+                            context.save(nil)
+                            
+                            
                             self.performSegueWithIdentifier("toTabBar", sender: authData)
                             
                         }
@@ -101,7 +106,7 @@ class VCLogin: UIViewController, UIActionSheetDelegate {
             
             print("hello")
            self.performSegueWithIdentifier("toTabBar", sender: theCode)
-        
+            
         
         }
         
@@ -145,9 +150,42 @@ func authAccount(account: ACAccount) {
         } else {
             // We have an authenticated Twitter user
             
-            // segue to chat
-            self.theCode = authData
+            
+            var appDel: AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+            var context: NSManagedObjectContext = appDel.managedObjectContext!
+            
+            
+            var request = NSFetchRequest(entityName : "Twitter")
+            var results : NSArray = context.executeFetchRequest(request, error: nil)!
+            
+            if results.count < 1{
+                
+                var newUser = NSEntityDescription.insertNewObjectForEntityForName("Twitter", inManagedObjectContext: context) as! NSManagedObject
+                newUser.setValue(authData.uid, forKey: "uID")
+                newUser.setValue(0, forKey: "count")
+                context.save(nil)
+                
+                
+                var questionToAdd = Firebase(url:"https://miquiz.firebaseio.com/\(authData.uid)/Questions")
+                let addQuestion = ["Question":"This is a test Question", "Answer":"This is a test answer","ID":"ID1"]
+                let questionRef = questionToAdd.childByAutoId()
+                questionRef.setValue(addQuestion)
+                
+                
+                var quiz = Firebase(url:"https://miquiz.firebaseio.com/\(authData.uid)/MyQuizzes/Example Quiz/Round 1")
+                let addQuiz = ["ID":"ID1"]
+                let quizRef = quiz.childByAutoId()
+                quizRef.setValue(addQuiz)
+                
+                
+                
+            }
+            var newUser = NSEntityDescription.insertNewObjectForEntityForName("UID", inManagedObjectContext: context) as! NSManagedObject
+            newUser.setValue(1, forKey: "login")
+            context.save(nil)
             self.performSegueWithIdentifier("toTabBar", sender: authData)
+
+
         }
     })
 }

@@ -32,9 +32,63 @@ class VCMyQuizzes: UIViewController, UITableViewDataSource, UITableViewDelegate{
         //print("User: \(user)")
        
         var results : NSArray = context.executeFetchRequest(request, error: nil)!
-        
         var res = results[0] as! NSManagedObject
-        var uid = res.valueForKey("uID") as! String
+        if results.count == 1{
+            res = results[0] as! NSManagedObject
+        
+        }
+        else{
+        
+            res = results[results.count - 1] as! NSManagedObject
+        
+        }
+        
+        
+        
+        
+        var login = res.valueForKey("login") as! Int
+        var uid = ""
+        
+        if login == 0{
+        
+            var request = NSFetchRequest(entityName : "Facebook")
+            var results : NSArray = context.executeFetchRequest(request, error: nil)!
+            var res = results[0] as! NSManagedObject
+            
+            if results.count == 1
+            {
+                res = results[0] as! NSManagedObject
+                
+            }
+            else{
+                
+                res = results[results.count - 1] as! NSManagedObject
+                
+            }
+            uid = res.valueForKey("uID") as! String
+        
+        
+        }
+        else if login == 1{
+            var request = NSFetchRequest(entityName : "Twitter")
+            var results : NSArray = context.executeFetchRequest(request, error: nil)!
+            
+            var res = results[0] as! NSManagedObject
+            if results.count == 1{
+                res = results[0] as! NSManagedObject
+                
+            }
+            else{
+                
+                res = results[results.count] as! NSManagedObject
+                
+            }
+            uid = res.valueForKey("uID") as! String
+        
+        
+        
+        }
+        
         
         
         tableView.dataSource = self

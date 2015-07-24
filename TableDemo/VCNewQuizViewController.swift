@@ -67,7 +67,7 @@ class VCNewQuizViewController: UIViewController {
         
         
         var refQ = Firebase(url:"https://miquiz.firebaseio.com/\(uid)/Questions")
-        let add = ["Question": quizQuestionText, "Answer": quizAnswerText, "ID" : IDCount]
+        let add = ["Question": quizQuestionText, "Answer": quizAnswerText, "ID" : "ID\(IDCount)"]
         let post1Ref = refQ.childByAutoId()
         post1Ref.setValue(add)
         
